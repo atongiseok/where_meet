@@ -1,0 +1,16 @@
+{
+  "name": "where_meet",
+  "version": "0.1.0",
+  "private": true,
+  "description": "오늘 어디서 만나? - 모임 장소 정하기 반응형 웹",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.11.3"
+  }
+}
