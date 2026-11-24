@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오늘 어디서 만나?</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>🍻 오늘 어디서 만나?</h1>
+      <p>모임 장소, 같이 정해요</p>
+    </header>
+
+    <div class="grid">
+      <a class="card" href="/auth/">
+        <div class="emoji">🔐</div>
+        <h2>회원가입 · 로그인</h2>
+        <p>아톤 사내 계정 · 카카오, 닉네임, 초대 링크, 탈퇴</p>
+        <span class="owner">김정우</span>
+      </a>
+      <a class="card" href="/journey/">
+        <div class="emoji">🧭</div>
+        <h2>장소 정하기 여정</h2>
+        <p>설문으로 지역 정하고 맛집 추천받기</p>
+        <span class="owner">박수린</span>
+      </a>
+      <a class="card" href="/board/">
+        <div class="emoji">📋</div>
+        <h2>게시판</h2>
+        <p>공지사항 · 회원게시판</p>
+        <span class="owner">권기석</span>
+      </a>
+      <a class="card" href="/share/">
+        <div class="emoji">📤</div>
+        <h2>공유하기</h2>
+        <p>정한 장소를 친구들에게 공유</p>
+        <span class="owner">권기석</span>
+      </a>
+      <a class="card" href="/location/">
+        <div class="emoji">📍</div>
+        <h2>GPS · 강제 장소 지정</h2>
+        <p>내 위치 확인, 못 정하면 강제로 정해주기</p>
+        <span class="owner">권기석</span>
+      </a>
+    </div>
+
+    <footer id="health">서버 상태 확인 중…</footer>
+  </div>
+
+  <script>
+    fetch('/api/health')
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById('health').textContent =
+          '서버 ' + (d.status === 'ok' ? '정상' : '확인 필요') + ' · DB ' + (d.db === 'ok' ? '연결됨' : d.db);
+      })
+      .catch(() => { document.getElementById('health').textContent = '서버 상태를 확인할 수 없어요'; });
+  </script>
+</body>
+</html>
